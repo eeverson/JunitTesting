@@ -5,42 +5,42 @@
  * courses, books, articles, and the like. Contact us if you are in doubt.
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/utj2 for more book information.
- ***/
+***/
 package iloveyouboss.jobapp;
 
 
 public class Answer {
-    private int i;
-    private Question question;
+   private int i;
+   private Question question;
 
-    public Answer(Question question, int i) {
-        this.question = question;
-        this.i = i;
-    }
+   public Answer(Question question, int i) {
+      this.question = question;
+      this.i = i;
+   }
 
-    public Answer(Question characteristic, String matchingValue) {
-        this.question = characteristic;
-        this.i = characteristic.indexOf(matchingValue);
-    }
+   public Answer(Question characteristic, String matchingValue) {
+      this.question = characteristic;
+      this.i = characteristic.indexOf(matchingValue);
+   }
+   
+   public String getQuestionText() {
+      return question.getText();
+   }
 
-    public String getQuestionText() {
-        return question.getText();
-    }
+   @Override
+   public String toString() {
+      return String.format("%s %s", question.getText(), question.getAnswerChoice(i));
+   }
 
-    @Override
-    public String toString() {
-        return String.format("%s %s", question.getText(), question.getAnswerChoice(i));
-    }
+   public boolean match(int expected) {
+      return question.match(expected, i);
+   }
 
-    public boolean match(int expected) {
-        return question.match(expected, i);
-    }
+   public boolean match(Answer otherAnswer) {
+      return question.match(i, otherAnswer.i);
+   }
 
-    public boolean match(Answer otherAnswer) {
-        return question.match(i, otherAnswer.i);
-    }
-
-    public Question getCharacteristic() {
-        return question;
-    }
+   public Question getCharacteristic() {
+      return question;
+   }
 }

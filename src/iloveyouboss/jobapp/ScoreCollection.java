@@ -10,25 +10,15 @@ package iloveyouboss.jobapp;
 
 import java.util.*;
 
-public class Criteria implements Iterable<Criterion> {
-
-   private List<Criterion> criteria = new ArrayList<>();
-
-   public void add(Criterion criterion) {
-      criteria.add(criterion);
-   }
-
-   @Override
-   public Iterator<Criterion> iterator() {
-      return criteria.iterator();
+public class ScoreCollection {
+   private List<Scoreable> scores = new ArrayList<>();
+   
+   public void add(Scoreable scoreable) {
+      scores.add(scoreable);
    }
    
    public int arithmeticMean() {
-      return 0;
-   }
-
-   public double geometricMean(int[] numbers) {
-      int totalProduct = Arrays.stream(numbers).reduce(1, (product, number) -> product * number);
-      return Math.pow(totalProduct, 1.0 / numbers.length);
+      int total = scores.stream().mapToInt(Scoreable::getScore).sum();
+      return total / scores.size();
    }
 }

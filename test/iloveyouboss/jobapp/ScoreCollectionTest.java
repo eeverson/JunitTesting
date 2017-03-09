@@ -6,23 +6,26 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/utj2 for more book information.
 ***/
-package iloveyouboss.score;
+package iloveyouboss.jobapp;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import iloveyouboss.jobapp.ScoreCollection;
+import iloveyouboss.jobapp.*;
 import org.junit.*;
 
 public class ScoreCollectionTest {
    @Test
    public void answersArithmeticMeanOfTwoNumbers() {
-      ScoreCollection collection = new ScoreCollection();
+      // Arrange
+      iloveyouboss.jobapp.ScoreCollection collection = new iloveyouboss.jobapp.ScoreCollection();
       collection.add(() -> 5);
       collection.add(() -> 7);
       
+      // Act
       int actualResult = collection.arithmeticMean();
-
+      
+      // Assert
       assertThat(actualResult, equalTo(6));
    }
 }
